@@ -24,34 +24,34 @@ public class UserController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public String allCategories(Model model) {
+    public String allUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());
         return "users";
     }
 
     @RequestMapping(value = "create", method = RequestMethod.GET)
-    public String createCategoryFrom(Model model) {
+    public String createUserFrom(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("action", "create");
         return "user";
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.GET)
-    public String editForm(@RequestParam("id") Long id, Model model) {
+    public String editUserForm(@RequestParam("id") Long id, Model model) {
         model.addAttribute("user", userRepository.findById(id));
         model.addAttribute("action", "edit");
         return "user";
     }
 
-//    @RequestMapping(value = "edit", method = RequestMethod.POST)
-//    public String editForm(@ModelAttribute("user") User user) {
-//        userRepository.update(user);
-//        return "user";
-//    }
-//
-//    @RequestMapping(value = "create", method = RequestMethod.POST)
-//    public String createCategory(@ModelAttribute("user") User user) {
-//        userRepository.create(user);
-//        return "redirect:/users";
-//    }
+    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    public String editUserForm(@ModelAttribute("user") User user) {
+        userRepository.update(user);
+        return "user";
+    }
+
+    @RequestMapping(value = "create", method = RequestMethod.POST)
+    public String createUser(@ModelAttribute("user") User user) {
+        userRepository.create(user);
+        return "redirect:/users";
+    }
 }

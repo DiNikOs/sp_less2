@@ -25,6 +25,7 @@
     <%-- Нам нужно указать, продукт какой категории мы создаем --%>
     <c:param name="categoryId" value="${category.id}"/>
 </c:url>
+
 <a href="${createUrl}">Create new Product</a>
 
 <table border="1">

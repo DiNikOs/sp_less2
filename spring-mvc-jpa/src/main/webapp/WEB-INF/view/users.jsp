@@ -3,7 +3,7 @@
 
 <html>
 <head>
-    <title>First Spring MVC View</title>
+    <title>Users</title>
 </head>
 <body>
 
