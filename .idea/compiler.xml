@@ -6,10 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="servlet-app" />
+        <module name="spring-mvc-java" />
+        <module name="spring-mvc-jpa" />
+        <module name="spring-mvc-xml" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="servlet-app" target="1.8" />
       <module name="servlet-mvc-java" target="1.8" />
       <module name="spring-mvc-java" target="1.8" />
     </bytecodeTargetLevel>

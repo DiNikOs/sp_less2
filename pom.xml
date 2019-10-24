@@ -12,6 +12,9 @@
 
     <modules>
         <module>servlet-app</module>
+        <module>spring-mvc-java</module>
+        <module>spring-mvc-jpa</module>
+        <module>spring-mvc-xml</module>
     </modules>
 
 
