@@ -24,10 +24,17 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     // Нам пришлось добавить это поле, т.к. мы не можем передать целый класс User как часть формы
     // На следующем занятии разберем, как решить эту проблему
     @Transient
     private Long categoryId;
+
+    @Transient
+    private Long userId;
 
     public Product() {
     }
@@ -73,6 +80,14 @@ public class Product {
         return category;
     }
 
+    public User getUser(){
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public void setCategory(Category category) {
         this.category = category;
     }
@@ -83,5 +98,13 @@ public class Product {
 
     public void setCategoryId(Long categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 }

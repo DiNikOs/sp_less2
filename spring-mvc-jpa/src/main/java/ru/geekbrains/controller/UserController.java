@@ -43,15 +43,15 @@ public class UserController {
         return "user";
     }
 
-    @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String editForm(@ModelAttribute("user") User user) {
-        userRepository.update(user);
-        return "user";
-    }
-
-    @RequestMapping(value = "create", method = RequestMethod.POST)
-    public String createCategory(@ModelAttribute("user") User user) {
-        userRepository.create(user);
-        return "redirect:/users";
-    }
+//    @RequestMapping(value = "edit", method = RequestMethod.POST)
+//    public String editForm(@ModelAttribute("user") User user) {
+//        userRepository.update(user);
+//        return "user";
+//    }
+//
+//    @RequestMapping(value = "create", method = RequestMethod.POST)
+//    public String createCategory(@ModelAttribute("user") User user) {
+//        userRepository.create(user);
+//        return "redirect:/users";
+//    }
 }

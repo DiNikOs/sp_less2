@@ -18,7 +18,7 @@ public class User {
     private String description;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Product> products;
+    private List<Product> productsUser;
 
     public User() {
     }
@@ -52,11 +52,11 @@ public class User {
         this.description = description;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Product> getProductsUser() {
+        return productsUser;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setProducts(List<Product> productsUser) {
+        this.productsUser = productsUser;
     }
 }

@@ -18,21 +18,21 @@ public class UserRepository {
         this.sessionFactory = sessionFactory;
     }
 
-    public void create(User user) {
-        EntityManager em = sessionFactory.createEntityManager();
-        em.getTransaction().begin();
-        em.persist(user);
-        em.getTransaction().commit();
-        em.close();
-    }
-
-    public void update(User user) {
-        EntityManager em = sessionFactory.createEntityManager();
-        em.getTransaction().begin();
-        em.merge(user);
-        em.getTransaction().commit();
-        em.close();
-    }
+//    public void create(User user) {
+//        EntityManager em = sessionFactory.createEntityManager();
+//        em.getTransaction().begin();
+//        em.persist(user);
+//        em.getTransaction().commit();
+//        em.close();
+//    }
+//
+//    public void update(User user) {
+//        EntityManager em = sessionFactory.createEntityManager();
+//        em.getTransaction().begin();
+//        em.merge(user);
+//        em.getTransaction().commit();
+//        em.close();
+//    }
 
     public List<User> findAll() {
         EntityManager em = sessionFactory.createEntityManager();
