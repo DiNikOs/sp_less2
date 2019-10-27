@@ -86,14 +86,14 @@ public class MainController {
         return "/product.xhtml";
     }
 
-    public String saveProduct() {
-        if (product.getId() == null) {
-            Repository.insert(product);
-        } else {
-            Repository.update(product);
-        }
-        return "/index.xhtml";
-    }
+//    public String saveProduct() {
+//        if (product.getId() == 0) {
+//            Repository.insert(product);
+//        } else {
+//            Repository.update(product);
+//        }
+//        return "/index.xhtml";
+//    }
 
     public void deleteProduct(Product product){
         logger.info("Deleting Product.");
