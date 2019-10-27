@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name =  "USER")
+@Table(name = "USER")
 public class User {
 
     @Id
@@ -18,7 +18,7 @@ public class User {
     private String description;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Product> productsUser;
+    private List<Product> products;
 
     public User() {
     }
@@ -53,10 +53,10 @@ public class User {
     }
 
     public List<Product> getProductsUser() {
-        return productsUser;
+        return products;
     }
 
-    public void setProducts(List<Product> productsUser) {
-        this.productsUser = productsUser;
+    public void setProductsUser(List<Product> products) {
+        this.products = products;
     }
 }

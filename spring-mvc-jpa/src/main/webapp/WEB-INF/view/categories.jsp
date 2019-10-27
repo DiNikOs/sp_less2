@@ -1,13 +1,11 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
     <title>Categories</title>
 </head>
 <body>
-
-<a href="create">Create new Category</a>
 
 <table border="1">
     <tr>
@@ -30,6 +28,8 @@
             <td>${category.description}</td>
         </tr>
     </c:forEach>
+
+    <a href="create">Create new Category</a>
 
 </table>
 </body>

@@ -29,7 +29,7 @@ public class UserController {
         return "users";
     }
 
-    @RequestMapping(value = "create", method = RequestMethod.GET)
+    @RequestMapping(value = "createUser", method = RequestMethod.GET)
     public String createUserFrom(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("action", "create");
@@ -38,20 +38,22 @@ public class UserController {
 
     @RequestMapping(value = "edit", method = RequestMethod.GET)
     public String editUserForm(@RequestParam("id") Long id, Model model) {
-        model.addAttribute("user", userRepository.findById(id));
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException("User not found"));
+        model.addAttribute("user", user);
         model.addAttribute("action", "edit");
         return "user";
     }
 
     @RequestMapping(value = "edit", method = RequestMethod.POST)
     public String editUserForm(@ModelAttribute("user") User user) {
-        userRepository.update(user);
-        return "user";
+        userRepository.save(user);
+        return "redirect:/users";
     }
 
-    @RequestMapping(value = "create", method = RequestMethod.POST)
+    @RequestMapping(value = "createUser", method = RequestMethod.POST)
     public String createUser(@ModelAttribute("user") User user) {
-        userRepository.create(user);
+        userRepository.save(user);
         return "redirect:/users";
     }
 }

@@ -11,6 +11,7 @@
     <%-- Очень часто применяемый способ передачи id через форму --%>
     <input type="hidden" name="id" id="id" value="${product.id}">
     <input type="hidden" name="categoryId" id="categoryId" value="${product.category.id}">
+        <%--<input type="hidden" name="userId" id="userId" value="${product.user.id}">--%>
     <p>
         <label for="name">Name</label>
         <input type="text" id="name" name="name" value="${product.name}" />
@@ -29,6 +30,5 @@
     </p>
     <input type="submit" />
 </form>
-
 </body>
 </html>
