@@ -10,22 +10,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import ru.geekbrains.persistence.UserRepository;
 import ru.geekbrains.persistence.entity.Category;
 import ru.geekbrains.persistence.entity.User;
+import ru.geekbrains.service.UserService;
 
 
 @Controller
 @RequestMapping("users")
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
     @Autowired
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String allUsers(Model model) {
-        model.addAttribute("users", userRepository.findAll());
+        model.addAttribute("users", userService.findAllWithoutProductsUser());
         return "users";
     }
 
@@ -36,24 +37,26 @@ public class UserController {
         return "user";
     }
 
-    @RequestMapping(value = "edit", method = RequestMethod.GET)
+    @RequestMapping(value = "editUser", method = RequestMethod.GET)
     public String editUserForm(@RequestParam("id") Long id, Model model) {
-        User user = userRepository.findById(id)
+        User user = userService.findByIdWithProductsUser(id)
                 .orElseThrow(() -> new IllegalStateException("User not found"));
         model.addAttribute("user", user);
         model.addAttribute("action", "edit");
         return "user";
     }
 
-    @RequestMapping(value = "edit", method = RequestMethod.POST)
+    @RequestMapping(value = "editUser", method = RequestMethod.POST)
     public String editUserForm(@ModelAttribute("user") User user) {
-        userRepository.save(user);
+        userService.save(user);
         return "redirect:/users";
     }
 
-    @RequestMapping(value = "createUser", method = RequestMethod.POST)
+    @RequestMapping(value = "saveUser", method = RequestMethod.POST) //createUser
     public String createUser(@ModelAttribute("user") User user) {
-        userRepository.save(user);
+        userService.save(user);
         return "redirect:/users";
     }
+
+
 }

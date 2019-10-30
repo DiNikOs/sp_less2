@@ -14,8 +14,8 @@
         <th>Name</th>
         <th>Description</th>
         <th>Category</th>
-        <th>Price</th>
     </tr>
+
     <form action="" method="get">
         <label for="categoryFilter">Category filter</label>
         <select id="categoryFilter" name="categoryId">
@@ -26,22 +26,24 @@
         </select>
         <input type="submit" value="Apply" />
     </form>
+
     <c:forEach items="${products}" var="prod">
         <tr>
             <td>${prod.id}</td>
-            <c:url value="/products/save" var="editProductUrl">
+
+            <c:url value="/products/edit" var="editProductUrl">
                 <c:param name="id" value="${prod.id}"/>
             </c:url>
-            <%--<td>${prod.name}</td>--%>
             <td><a href="${editProductUrl}">${prod.name}</a></td>
+
             <td>${prod.description}</td>
+
             <td>${prod.category.name}</td>
-            <td>${prod.price}</td>
         </tr>
     </c:forEach>
 
-
 </table>
+
 </body>
 
 </html>

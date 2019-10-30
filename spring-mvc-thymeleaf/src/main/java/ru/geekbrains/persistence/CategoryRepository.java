@@ -18,5 +18,4 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
             "left join fetch c.products p " +
             "where c.id = :id")
     Optional<Category> findByIdWithProducts(@Param("id") Long id);
-
 }

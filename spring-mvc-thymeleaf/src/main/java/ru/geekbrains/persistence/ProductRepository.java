@@ -12,23 +12,12 @@ import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    List<Product> getAllByUser_Id(Long userId);
-    List<Product> findTopByOrderByPriceAsc();
-    List<Product> findTopByOrderByPriceDesc();
-    List<Product> findByOrderByPriceAsc();
-    List<Product> findByOrderByPriceDesc();
-
     List<Product> getAllByCategory_Id(Long categoryId);
+
     List<Product> getAllByCategory_Id(Long categoryId, Pageable pageable);
 
-    @Query("select new ru.geekbrains.controller.repr.ProductRepr(" +
-            "p.id, p.name, " +
-            "p.description, " +
-            "p.price, " +
-            "p.category.id, " +
-            "p.category.name) " +
+    @Query("select new ru.geekbrains.controller.repr.ProductRepr(p.id, p.name, p.description, p.price, p.category.id, p.category.name) " +
             "from Product p " +
             "where p.id = :id")
-
     Optional<ProductRepr> getProductReprById(@Param("id") Long id);
 }

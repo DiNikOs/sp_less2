@@ -25,16 +25,7 @@
     <c:param name="categoryId" value="${category.id}"/>
 </c:url>
 <a href="${createUrl}">Create new Product</a>
-<%--<c:url value="/products/ascPrice" var="ascPriceUrl">--%>
-    <%--&lt;%&ndash; Нам нужно указать, продукт какой категории мы создаем &ndash;%&gt;--%>
-    <%--<c:param name="price" value="${product.id}"/>--%>
-<%--</c:url>--%>
-<%--<a href="${ascPriceUrl}">Asc Product</a>--%>
-<%--<c:url value="/products/descPrice" var="descPriceUrl">--%>
-    <%--&lt;%&ndash; Нам нужно указать, продукт какой категории мы создаем &ndash;%&gt;--%>
-    <%--<c:param name="price" value="${product.id}"/>--%>
-<%--</c:url>--%>
-<%--<a href="${descPriceUrl}">Desc Product</a>--%>
+
 <table border="1">
     <tr>
         <th>Id</th>

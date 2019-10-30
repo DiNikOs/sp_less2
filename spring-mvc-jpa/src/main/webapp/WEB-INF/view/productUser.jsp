@@ -5,7 +5,7 @@
     <title>Product User</title>
 </head>
 <body>
-<c:url value="/products/createUser" var="createUserUrl"/>
+<c:url value="/products/save" var="createUserUrl"/>
 <form action="${createUserUrl}" method="post">
     <%-- Очень часто применяемый способ передачи id через форму --%>
     <input type="hidden" name="id" id="id" value="${product.id}">

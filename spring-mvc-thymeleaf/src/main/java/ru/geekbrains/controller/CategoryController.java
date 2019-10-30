@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import ru.geekbrains.persistence.CategoryRepository;
 import ru.geekbrains.persistence.entity.Category;
 import ru.geekbrains.service.CategoryService;
+
 
 @Controller
 @RequestMapping("categories")
@@ -42,12 +42,6 @@ public class CategoryController {
         model.addAttribute("category", category);
         model.addAttribute("action", "edit");
         return "category";
-    }
-
-    @RequestMapping(value = "edit", method = RequestMethod.POST)
-    public String editForm(@ModelAttribute("category") Category category) {
-        categoryService.save(category);
-        return "redirect:/categories";
     }
 
     @RequestMapping(value = "save", method = RequestMethod.POST)
