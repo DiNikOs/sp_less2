@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    List<Product> getAllByUser_Id(Long userId);
+
     List<Product> findTopByOrderByPriceAsc();
     List<Product> findTopByOrderByPriceDesc();
     List<Product> findByOrderByPriceAsc();
@@ -20,6 +20,13 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     List<Product> getAllByCategory_Id(Long categoryId);
     List<Product> getAllByCategory_Id(Long categoryId, Pageable pageable);
+
+    List<Product> getAllByUser_Id(Long userId);
+    List<Product> getAllByUser_Id(Long userId, Pageable pageable);
+
+    List<Product> findAllByUser_Id(Long userId);
+
+
 
     @Query("select new ru.geekbrains.controller.repr.ProductRepr(" +
             "p.id, p.name, " +

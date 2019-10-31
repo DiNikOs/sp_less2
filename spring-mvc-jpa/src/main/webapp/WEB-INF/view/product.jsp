@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<c:url value="/products/save" var="createUrl"/>
+<c:url value="/products/create" var="createUrl"/>
 <form action="${createUrl}" method="post">
     <%-- Очень часто применяемый способ передачи id через форму --%>
     <input type="hidden" name="id" id="id" value="${product.id}">

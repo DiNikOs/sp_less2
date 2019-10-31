@@ -29,7 +29,7 @@
     <c:forEach items="${products}" var="prod">
         <tr>
             <td>${prod.id}</td>
-            <c:url value="/products/save" var="editProductUrl">
+            <c:url value="/products/create" var="editProductUrl">
                 <c:param name="id" value="${prod.id}"/>
             </c:url>
             <%--<td>${prod.name}</td>--%>

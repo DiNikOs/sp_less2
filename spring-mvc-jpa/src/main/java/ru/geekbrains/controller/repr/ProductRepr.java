@@ -16,6 +16,10 @@ public class ProductRepr {
 
     private String categoryName;
 
+    private Long userId;
+
+    private String userName;
+
     public ProductRepr() {
     }
 
@@ -26,6 +30,17 @@ public class ProductRepr {
         this.price = price;
         this.categoryId = categoryId;
         this.categoryName = categoryName;
+    }
+
+    public ProductRepr(Long id, String name, String description, BigDecimal price, Long categoryId, String categoryName, Long userId, String userName) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.userId = userId;
+        this.userName = userName;
     }
 
     public Long getId() {
@@ -75,4 +90,12 @@ public class ProductRepr {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
+
+//    public Long getCategory() {
+//        return category;
+//    }
+//
+//    public void setCategory(Long category) {
+//        this.category = category;
+//    }
 }

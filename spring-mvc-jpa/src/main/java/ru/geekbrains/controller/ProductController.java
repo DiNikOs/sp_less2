@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.geekbrains.controller.repr.ProductRepr;
+import ru.geekbrains.controller.repr.ProductReprUser;
 import ru.geekbrains.persistence.CategoryRepository;
 import ru.geekbrains.persistence.ProductRepository;
 import ru.geekbrains.persistence.UserRepository;
@@ -76,10 +77,29 @@ public class ProductController {
         return "product";
     }
 
-    @RequestMapping(value = "save", method = RequestMethod.POST)
+    @RequestMapping(value = "create", method = RequestMethod.POST)
     public String createProduct(@ModelAttribute("product") ProductRepr productRepr) {
         productService.save(productRepr);
         return "redirect:/categories/edit?id=" + productRepr.getCategoryId();
+    }
+
+    @RequestMapping(value = "create", method = RequestMethod.GET)
+    public String createProductUserFrom(@RequestParam("userId") Long userId, Model model) {
+        model.addAttribute("product", productService.getEmptyProductReprWithUser(userId));
+        return "product";
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.GET)
+    public String editProductUser(@RequestParam("id") Long id, Model model) {
+        model.addAttribute("product", productService.getProductReprUserById(id)
+                .orElseThrow(() -> new IllegalStateException("Product not found")));
+        return "product";
+    }
+
+    @RequestMapping(value = "create", method = RequestMethod.POST)
+    public String createProductUser(@ModelAttribute("product") ProductReprUser productReprUser) {
+        productService.save(productReprUser);
+        return "redirect:/users/edit?id=" + productReprUser.getUserId();
     }
 
 
