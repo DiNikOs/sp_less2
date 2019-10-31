@@ -5,6 +5,9 @@
     <file type="web" url="file://$PROJECT_DIR$/servlet-app" />
     <file type="web" url="file://$PROJECT_DIR$/servlet-mvc-java" />
     <file type="web" url="file://$PROJECT_DIR$/spring-mvc-java" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-mvc-jpa" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-mvc-thymeleaf" />
+    <file type="web" url="file://$PROJECT_DIR$/spring-mvc-xml" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -14,6 +17,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/servlet-app/pom.xml" />
         <option value="$PROJECT_DIR$/servlet-mvc-java/pom.xml" />
         <option value="$PROJECT_DIR$/spring-mvc-java/pom.xml" />
       </set>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Products</title>
+</head>
+
+<body>
+
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+    </tr>
+
+    <form action="" method="get">
+        <label for="categoryFilter">Category filter</label>
+        <!--th:field="*{categories[__${category.index}__].category}"-->
+        <select id="categoryFilter" name="categoryId" >
+            <!--${#request.param['categoryId']== null || #request.param['categoryId'] == -1 ? 'selected' : ''}-->
+            <option th:value="${-1}" ${#request.param['categoryId'] == null || #request.param['categoryId'] == -1 ? 'selected' : ''}
+            ></option>
+            <option th:each="category : ${categories}"
+                        th:text="${category.name}"
+                        th:value="${category.id}" ${#request.param['categoryId'] == category.id ? 'selected' : ''}
+                ></option>
+          
+        </select>
+        <input type="submit" value="Apply" />
+
+    </form>
+
+    <form th:object="${product}" action="sort" th:action="@{/products/sort}" method="get">
+
+    <p>
+    <label for="sortMin">Sort min</label>
+    <input type="number" id="sortMin" name="sortMin" th:field="*{sortMin}"/>
+        </p><p>
+    <label for="sortMax">Sort max</label>
+    <input type="number" id="sortMax" name="sortMax" th:field="*{sortMax}"/>
+        </p><p>
+    <input type="submit" value="Apply" />
+    </p>
+    </form>
+
+        <tr th:each="prod : ${products}">
+            <td th:text="${prod.id}">ID</td>
+            <td><a th:href="@{/products/edit?id={id}(id=${prod.id})}"
+                   th:text="${prod.name}">Product</a></td>
+            <td th:text="${prod.description}">Description</td>
+            <td th:text="${prod.category.name}">Category name</td>
+            <td th:text="${prod.price}">Price</td>
+        </tr>
+</table>
+
+</body>
+
+</html>
