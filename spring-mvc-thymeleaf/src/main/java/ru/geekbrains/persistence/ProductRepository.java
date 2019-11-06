@@ -16,13 +16,18 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> getAllByCategory_Id(Long categoryId);
 
     List<Product> getAllByCategory_Id(Long categoryId, Pageable pageable);
-//    @Query("select new ru.geekbrains.controller.repr.ProductRepr(p.id, p.name, p.description, p.price, p.category.id, p.category.name) " +
-//            "from Product p " +
-//            "where p.id = :id")
-//    Optional<ProductRepr> getProductReprById(@Param("id") Long id);
 
-    @Query("select new ru.geekbrains.controller.repr.ProductRepr(p.id, p.name, p.description, p.price, p.category.id, p.category.name, p.sortMin, p.sortMax) " +
+    @Query("select new ru.geekbrains.controller.repr.ProductRepr(p.id, p.name, p.description, p.price, p.category.id, p.category.name) " +
             "from Product p " +
-            "where p.price > :sortMin and p.price < :sortMax" )
-    Optional<ProductRepr> findMinMax(@Param("id") Long id);
+            "where p.id = :id")
+    Optional<ProductRepr> getProductReprById(@Param("id") Long id);
+
+    @Query("select new ru.geekbrains.controller.repr.ProductRepr(p.id, p.name, p.description, p.price, p.category.id, p.category.name) " +
+        "from Product p " +
+        "where (:categoryId = -1L or p.category.id = :categoryId) and " +
+        "(:priceFrom is null or p.price >= :priceFrom) and " +
+        "(:priceTo is null or p.price <= :priceTo)")
+    List<ProductRepr> filterProducts(@Param("categoryId") Long categoryId,
+                                     @Param("priceFrom") BigDecimal priceFrom,
+                                     @Param("priceTo") BigDecimal priceTo);
 }

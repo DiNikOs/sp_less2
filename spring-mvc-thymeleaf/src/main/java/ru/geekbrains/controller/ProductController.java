@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.geekbrains.controller.repr.ProductFilter;
 import ru.geekbrains.controller.repr.ProductRepr;
 import ru.geekbrains.service.CategoryService;
 import ru.geekbrains.service.ProductService;
+
+import java.math.BigDecimal;
 
 
 @Controller
@@ -28,25 +31,13 @@ public class ProductController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String products(@RequestParam(name = "categoryId", required = false) Long categoryId,
+                           @RequestParam(name = "priceFrom", required = false) BigDecimal priceFrom,
+                           @RequestParam(name = "priceTo", required = false) BigDecimal priceTo,
                            Model model) {
+        ProductFilter productFilter = new ProductFilter(categoryId != null ? categoryId : -1, priceFrom, priceTo);
+        model.addAttribute("filter", productFilter);
         model.addAttribute("categories", categoryService.findAllWithoutProducts());
-        if (categoryId == null || categoryId == -1) {
-            model.addAttribute("products", productService.findAll());
-        } else {
-            model.addAttribute("products", productService.getAllByCategory_Id(categoryId));
-        }
-        return "products";
-    }
-
-    @RequestMapping(value = "sort", method = RequestMethod.GET)
-    public String productsSort(@RequestParam(name = "categoryId", required = false) Long categoryId,
-                           Model model) {
-        model.addAttribute("categories", categoryService.findAllWithoutProducts());
-        if (categoryId == null || categoryId == -1) {
-            model.addAttribute("products", productService.findAll());
-        } else {
-            model.addAttribute("products", productService. findMinMax(categoryId));
-        }
+        model.addAttribute("products", productService.filterProducts(productFilter));
         return "products";
     }
 
@@ -58,7 +49,7 @@ public class ProductController {
 
     @RequestMapping(value = "edit", method = RequestMethod.GET)
     public String editProduct(@RequestParam("id") Long id, Model model) {
-        model.addAttribute("product", productService.findMinMax(id)
+        model.addAttribute("product", productService.getProductReprById(id)
                 .orElseThrow(() -> new IllegalStateException("Product not found")));
         return "product";
     }

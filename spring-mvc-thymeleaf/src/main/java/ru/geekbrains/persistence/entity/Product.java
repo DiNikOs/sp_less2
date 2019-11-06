@@ -28,8 +28,6 @@ public class Product {
     // На следующем занятии разберем, как решить эту проблему
     @Transient
     private Long categoryId;
-    private BigDecimal sortMin;
-    private BigDecimal sortMax;
 
     public Product() {
     }
@@ -66,22 +64,6 @@ public class Product {
 
     public BigDecimal getPrice() {
         return price;
-    }
-
-    public BigDecimal getSortMin() {
-        return sortMin;
-    }
-
-    public BigDecimal getSortMax() {
-        return sortMax;
-    }
-
-    public void setSortMin(BigDecimal sortMin) {
-        this.sortMin = sortMin;
-    }
-
-    public void setSortMax(BigDecimal sortMax) {
-        this.sortMax = sortMax;
     }
 
     public void setPrice(BigDecimal price) {

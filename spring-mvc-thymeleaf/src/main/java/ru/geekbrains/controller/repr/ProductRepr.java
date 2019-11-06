@@ -15,21 +15,17 @@ public class ProductRepr {
     private Long categoryId;
 
     private String categoryName;
-    private BigDecimal sortMin;
-    private BigDecimal sortMax;
 
     public ProductRepr() {
     }
 
-    public ProductRepr(Long id, String name, String description, BigDecimal price, Long categoryId, String categoryName, BigDecimal sortMin, BigDecimal sortMax) {
+    public ProductRepr(Long id, String name, String description, BigDecimal price, Long categoryId, String categoryName) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.categoryId = categoryId;
         this.categoryName = categoryName;
-        this.sortMin = sortMin;
-        this.sortMax = sortMax;
     }
 
     public Long getId() {
@@ -62,22 +58,6 @@ public class ProductRepr {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public BigDecimal getSortMin() {
-        return sortMin;
-    }
-
-    public BigDecimal getSortMax() {
-        return sortMax;
-    }
-
-    public void setSortMin(BigDecimal sortMin) {
-        this.sortMin = sortMin;
-    }
-
-    public void setSortMax(BigDecimal sortMax) {
-        this.sortMax = sortMax;
     }
 
     public Long getCategoryId() {
