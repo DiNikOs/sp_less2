@@ -52,13 +52,9 @@
 
             <tr th:each="prod : ${products}">
                 <td th:text="${prod.id}">1</td>
-
                 <td><a th:href="@{/products/edit(id=${prod.id})}" th:text="${prod.name}">Product name</a></td>
-
                 <td th:text="${prod.price}">123</td>
-
                 <td th:text="${prod.description}">Description</td>
-
                 <td th:text="${prod.categoryName}">Category</td>
             </tr>
 
