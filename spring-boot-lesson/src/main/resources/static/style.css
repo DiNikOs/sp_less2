@@ -1,0 +1,11 @@
+.form-inline input.form-control {
+    width: 120px;
+}
+
+.table {
+    display: flex;
+    width: 300px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}

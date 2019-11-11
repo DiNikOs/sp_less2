@@ -1,0 +1,424 @@
+GET http://localhost:8081/api/product/11/id
+
+<> 2019-11-11T045059.200.json
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T045055.200.json
+
+###
+
+POST http://localhost:8081/api/product/
+Content-Type: application/json
+
+{
+  "id": 19,
+  "name": "dfagaesdgb",
+  "description": "dsfgwsgdsgfs",
+  "price": 30,
+  "categoryId": 4,
+  "categoryName": "hgbli"
+}
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T045047.200.json
+
+###
+
+GET http://localhost:8081/api/product/11/id
+
+<> 2019-11-11T043911.500.json
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T043901.200.json
+
+###
+
+GET http://localhost:8081/api/product/11/id
+
+<> 2019-11-11T043152.500.json
+
+###
+
+GET http://localhost:8081/api/product/11/id
+
+<> 2019-11-11T043022.200.json
+
+###
+
+POST http://localhost:8081/api/product/
+Content-Type: application/json
+
+{
+  "id": 19,
+  "name": "dfagaesdgb",
+  "description": "dsfgwsgdsgfs",
+  "price": 30,
+  "categoryId": 4,
+  "categoryName": "hgbli"
+}
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T043001.200.json
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T042740.500.json
+
+###
+
+GET http://localhost:8081/api/product/11/id
+
+<> 2019-11-11T042659.200.json
+
+###
+
+GET http://localhost:8081/api/product/11/id
+
+<> 2019-11-11T042355.404.json
+
+###
+
+GET http://localhost:8081/api/product/10/id
+
+<> 2019-11-11T042350.404.json
+
+###
+
+GET http://localhost:8081/api/product/1/id
+
+<> 2019-11-11T042334.404.json
+
+###
+
+GET http://localhost:8081/api/product/1/id
+
+###
+
+GET http://localhost:8081/api/product/1/id
+
+<> 2019-11-11T042201.404.json
+
+###
+
+DELETE http://localhost:8081/api/product/10/id
+
+###
+
+DELETE http://localhost:8081/api/product/9/id
+
+<> 2019-11-11T042123.500.json
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T042118.500.json
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T041615.500.json
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T041255.500.json
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T040853.200.json
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T040829.200.json
+
+###
+
+GET http://localhost:8081/api/product/all
+
+<> 2019-11-11T040752.500.json
+
+###
+
+GET http://localhost:8081/api/product/1/id
+
+<> 2019-11-11T040744.404.json
+
+###
+
+DELETE http://localhost:8081/api/product/9/id
+
+<> 2019-11-11T040737.500.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 15,
+  "name": "New Categoryvge30 !!!",
+  "description": "sdfgvegsfgfewfw",
+  "products": []
+}
+
+###
+
+PUT http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id":16,
+  "name": "New Categoryvge30 !!!",
+  "description": "sdfgvegsfgfewfw",
+  "products": []
+}
+
+DELETE http://localhost:8081/api/category/33/id
+
+<> 2019-11-11T040706.500.json
+
+###
+
+PUT http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id":16,
+  "name": "New Categoryvge30 !!!",
+  "description": "sdfgvegsfgfewfw",
+  "products": []
+}
+
+DELETE http://localhost:8081/api/category/33/id
+
+<> 2019-11-11T040300.500.json
+
+###
+
+PUT http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 30,
+  "name": "New Categoryvge30 !!!",
+  "description": "sdfgvegsfgfewfw",
+  "products": []
+}
+
+DELETE http://localhost:8081/api/category/33/id
+
+<> 2019-11-11T040233.500.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 15,
+  "name": "New Categoryvge30 !!!",
+  "description": "sdfgvegsfgfewfw",
+  "products": []
+}
+
+###
+
+GET http://localhost:8081/api/category/5/id
+
+<> 2019-11-11T040222.200.json
+
+###
+
+GET http://localhost:8081/api/category/all
+
+<> 2019-11-11T040218.200.json
+
+###
+
+PUT http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 30,
+  "name": "New Categoryvge30 !!!",
+  "description": "sdfgvegsfgfewfw",
+  "products": []
+}
+
+DELETE http://localhost:8081/api/category/33/id
+
+<> 2019-11-11T035740.405.json
+
+###
+
+GET http://localhost:8081/api/category/all
+
+<> 2019-11-11T035618.200.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 15,
+  "name": "New Categoryvge30 !!!",
+  "description": "sdfgvegsfgfewfw",
+  "products": []
+}
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 30,
+  "name": "New Categoryvge30 !!!",
+  "description": "sdfgvegsfgfewfw",
+  "products": []
+}
+
+<> 2019-11-11T035603.500.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 3,
+  "name": "New Categoryvge3 !!!",
+  "description": "sdfgvegsfgf",
+  "products": []
+}
+
+<> 2019-11-11T035552.500.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 3,
+  "name": "New Categoryvge3 !!!",
+  "description": "sdfgvegsfgf",
+  "products": []
+}
+
+<> 2019-11-11T035519.500.json
+
+###
+
+GET http://localhost:8081/api/category/all
+
+<> 2019-11-11T035458.200.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 10,
+  "name": "New Categoryvge !!!",
+  "description": "sdfgveg",
+  "products": []
+}
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 44,
+  "name": "New Categoryvge !!!",
+  "description": "sdfgveg",
+  "products": []
+}
+
+<> 2019-11-11T035440.500.json
+
+###
+
+GET http://localhost:8081/api/category/5/id
+
+<> 2019-11-11T035437.200.json
+
+###
+
+GET http://localhost:8081/api/category/all
+
+<> 2019-11-11T035434.200.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 44,
+  "name": "New Categoryvge !!!",
+  "description": "sdfgveg",
+  "products": []
+}
+
+<> 2019-11-11T035308.500.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 44,
+  "name": "New Categoryvge !!!",
+  "description": "gnfgndfge",
+  "products": []
+}
+
+<> 2019-11-11T035303.500.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 44,
+  "name": "New Category44 !!!",
+  "description": "gnfgndfge",
+  "products": []
+}
+
+<> 2019-11-11T035257.500.json
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 4,
+  "name": "New Category44 !!!",
+  "description": "gnfgndfge",
+  "products": []
+}
+
+<> 2019-11-11T035245.500.json
+
+###
+
+GET http://localhost:8081/api/category/all
+
+<> 2019-11-11T035237.200.json
+
+###
+

@@ -1,0 +1,48 @@
+GET http://localhost:8081/api/category/all
+
+###
+
+GET http://localhost:8081/api/category/5/id
+
+###
+
+POST http://localhost:8081/api/category/
+Content-Type: application/json
+
+{"id": 15,
+  "name": "New Categoryvge30 !!!",
+  "description": "sdfgvegsfgfewfw",
+  "products": []
+}
+
+###
+
+DELETE http://localhost:8081/api/category/33/id
+
+###
+
+GET http://localhost:8081/api/product/all
+
+###
+
+DELETE http://localhost:8081/api/product/10/id
+
+###
+
+POST http://localhost:8081/api/product/
+Content-Type: application/json
+
+{
+  "id": 19,
+  "name": "dfagaesdgb",
+  "description": "dsfgwsgdsgfs",
+  "price": 30,
+  "categoryId": 4,
+  "categoryName": "hgbli"
+}
+
+###
+
+GET http://localhost:8081/api/product/11/id
+
+###
