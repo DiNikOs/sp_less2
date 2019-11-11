@@ -29,8 +29,17 @@ public class CategoryService {
         return categoryRepository.findByIdWithProducts(id);
     }
 
+    @Transactional(readOnly = true)
+    public Optional<Category> findByIdCategory(Long id) {
+        return categoryRepository.findByIdCategory(id);
+    }
+
     @Transactional
     public void save(Category category) {
         categoryRepository.save(category);
+    }
+
+    public void delete(Long id) {
+        categoryRepository.deleteById(id);
     }
 }

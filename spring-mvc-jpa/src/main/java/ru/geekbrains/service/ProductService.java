@@ -105,5 +105,4 @@ public class ProductService {
                 .orElseThrow(() -> new IllegalStateException("User not found")));
         productRepository.save(product);
     }
-
 }

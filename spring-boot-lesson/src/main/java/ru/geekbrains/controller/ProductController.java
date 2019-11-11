@@ -20,7 +20,6 @@ import java.math.BigDecimal;
 public class ProductController {
 
     private final ProductService productService;
-
     private final CategoryService categoryService;
 
     @Autowired
@@ -38,12 +37,10 @@ public class ProductController {
                            Model model) {
         ProductFilter productFilter = new ProductFilter(categoryId, priceFrom, priceTo,
                 currentPage, pageSize);
-        productFilter.applyItemCount(productService.countFilterProducts(productFilter).intValue());
 
         model.addAttribute("products", productService.filterProducts(productFilter));
         model.addAttribute("filter", productFilter);
         model.addAttribute("categories", categoryService.findAllWithoutProducts());
-
         return "products";
     }
 

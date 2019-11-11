@@ -9,15 +9,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import ru.geekbrains.controller.repr.ProductRepr;
 import ru.geekbrains.controller.repr.ProductReprUser;
-import ru.geekbrains.persistence.CategoryRepository;
-import ru.geekbrains.persistence.ProductRepository;
-import ru.geekbrains.persistence.UserRepository;
-import ru.geekbrains.persistence.entity.Category;
-import ru.geekbrains.persistence.entity.Product;
-import ru.geekbrains.persistence.entity.User;
 import ru.geekbrains.service.CategoryService;
 import ru.geekbrains.service.ProductService;
 import ru.geekbrains.service.UserService;
+
+import java.math.BigDecimal;
 
 @Controller
 @RequestMapping("products")
@@ -45,22 +41,6 @@ public class ProductController {
         } else {
             model.addAttribute("products", productService.getAllByCategory_Id(categoryId));
         }
-//        model.addAttribute("categories", categoryRepository.findAll());
-//        if (categoryId == null || categoryId == -1) {
-//            model.addAttribute("products", productRepository.findAll());
-//        } else if (categoryId == 12) {
-//            model.addAttribute("products", productRepository.findTopByOrderByPriceAsc());
-//        } else if (categoryId == 13) {
-//            model.addAttribute("products", productRepository.findTopByOrderByPriceDesc());
-//        } else if (categoryId == 14) {
-//            model.addAttribute("products", productRepository.findTopByOrderByPriceAsc());
-//        } else if (categoryId == 15) {
-//            model.addAttribute("products", productRepository.findByOrderByPriceAsc());
-//        } else if (categoryId == 16) {
-//            model.addAttribute("products", productRepository.findByOrderByPriceDesc());
-//        }else {
-//            model.addAttribute("products", productRepository.getAllByCategory_Id(categoryId));
-//        }
         return "products";
     }
 
@@ -97,40 +77,9 @@ public class ProductController {
     }
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
-    public String createProductUser(@ModelAttribute("product") ProductReprUser productReprUser) {
+    public String createOrder(@ModelAttribute("product") ProductReprUser productReprUser) {
         productService.save(productReprUser);
         return "redirect:/users/edit?id=" + productReprUser.getUserId();
     }
 
-
-
-//    @RequestMapping(value = " ", method = RequestMethod.GET)
-//    public String productsUser(@RequestParam(name = "userId", required = false) Long userId,
-//                               Model model) {
-//        model.addAttribute("users", userRepository.findAll());
-//        if (userId == null || userId == -1) {
-//            model.addAttribute("productsUser", productRepository.findAll());
-//        } else {
-//            model.addAttribute("productsUser", productRepository.getAllByUser_Id(userId));
-//        }
-//        return "productsUser";
-//    }
-//
-//    @RequestMapping(value = "createUser", method = RequestMethod.GET)
-//    public String createProductUserFrom(@RequestParam("userId") Long userId, Model model) {
-//        User user = userRepository.findById(userId)
-//                .orElseThrow(() -> new IllegalStateException("User not found"));
-//        Product product = new Product();
-//        product.setUser(user);
-//        model.addAttribute("productUser", product);
-//        return "productUser";
-//    }
-//
-//    @RequestMapping(value = "createUser", method = RequestMethod.POST)
-//    public String createProductUser(@ModelAttribute("productUser") Product product) {
-//        product.setUser(userRepository.findById(product.getUserId())
-//                .orElseThrow(() -> new IllegalStateException("User not found")));
-//        productRepository.save(product);
-//        return "redirect:/users/edit?id=" + product.getUser().getId();
-//    }
 }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-
+    <link rel="stylesheet" type="text/css" href="style.css" th:href="@{style.css}"/>
     <title>Products</title>
 </head>
 
@@ -18,7 +18,10 @@
 
 <div class="container">
 
-    <form id="filterForm" action="" method="get" th:object="${filter}">
+    <form id="filterForm" action="" method="get"
+          th:object="${filter}">
+
+        <div class="form-inline">
         <label for="categoryFilter">Category filter</label>
         <select id="categoryFilter" th:field="*{categoryId}">
             <option th:value="${-1}"></option>
@@ -39,8 +42,8 @@
 
         <input type="hidden" th:field="*{currentPage}"/>
 
-        <input type="submit" value="Apply"/>
-
+        <button type="submit" class="btn btn-primary my-2">Apply</button>
+    </div>
         <table class="table">
             <tr>
                 <th>Id</th>

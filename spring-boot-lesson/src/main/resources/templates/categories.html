@@ -11,15 +11,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <link rel="stylesheet" type="text/css" href="style.css" th:href="@{style.css}"/>
 
     <title>First Spring MVC View</title>
 </head>
 
 <body>
-
+<div class="container">
 <a th:href="@{/categories/create}">Create new Category</a>
 
-<table border="1" th:unless="${categories.size() == 0}">
+<table class="table" th:unless="${categories.size() == 0}">
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -39,7 +40,7 @@
 </table>
 
 <a th:href="@{/index.html}"><-To Home</a>
-
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

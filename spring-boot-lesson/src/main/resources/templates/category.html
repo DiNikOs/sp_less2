@@ -11,28 +11,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
-
+    <link rel="stylesheet" type="text/css" href="style.css" th:href="@{style.css}"/>
     <title>Category</title>
 </head>
 <body>
-
+<div class="container">
 <form th:object="${category}" th:action="@{/categories/save}" method="post">
-    <!-- Очень часто применяемый способ передачи id через форму -->
-    <input type="hidden" name="id" id="id" th:field="*{id}">
-    <p>
+    <div class="form-group">
+        <input type="hidden" name="id" id="id" th:field="*{id}">
+    </div>
+    <div class="form-group">
         <label for="name">Name</label>
         <input type="text" id="name" name="name" th:field="*{name}"/>
-    </p>
-    <p>
+    </div>
+    <div class="form-group">
         <label for="description">Description</label>
         <input type="text" id="description" name="description" th:field="*{description}"/>
-    </p>
-    <input type="submit"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <!--<input type="submit"/>-->
 </form>
 
-<a th:href="@{/products/create?categoryId={categoryId}(categoryId=${category.id})}">Create new Product</a>
+<a th:if="${category.id}!=null" th:href="@{/products/create?categoryId={categoryId}(categoryId=${category.id})}">Create new Product</a>
 
-<table border="1">
+<table class="table" th:if="${category.id}!=null">
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -49,7 +51,7 @@
 </table>
 
 <a th:href="@{/index.html}"><-To Home</a>
-
+</div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
