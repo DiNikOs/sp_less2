@@ -1,0 +1,51 @@
+package ru.geekbrains.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import ru.geekbrains.controller.error.ResourceNotFoundException;
+import ru.geekbrains.persistence.entity.Category;
+import ru.geekbrains.service.CategoryService;
+
+
+@Controller
+@RequestMapping("admin/categories")
+public class CategoryController {
+
+    private final CategoryService categoryService;
+
+    @Autowired
+    public CategoryController(CategoryService categoryService) {
+        this.categoryService = categoryService;
+    }
+
+//    @RequestMapping(value = "", method = RequestMethod.GET)
+    @GetMapping("/admin/categories")
+    public String allCategories(Model model) {
+        model.addAttribute("categories", categoryService.findAllWithoutProducts());
+        return "redirect:/admin/categories";
+    }
+
+    @RequestMapping(value = "create", method = RequestMethod.GET)
+    public String createCategoryFrom(Model model) {
+        model.addAttribute("category", new Category());
+        model.addAttribute("action", "create");
+        return "redirect:/admin/categories";
+    }
+
+    @RequestMapping(value = "edit", method = RequestMethod.GET)
+    public String editForm(@RequestParam("id") Long id, Model model) {
+        Category category = categoryService.findByIdWithProducts(id)
+                .orElseThrow(ResourceNotFoundException::new);
+        model.addAttribute("category", category);
+        model.addAttribute("action", "edit");
+        return "redirect:/admin/categories";
+    }
+
+    @RequestMapping(value = "save", method = RequestMethod.POST)
+    public String createCategory(@ModelAttribute("category") Category category) {
+        categoryService.save(category);
+        return "redirect:/admin/categories";
+    }
+}

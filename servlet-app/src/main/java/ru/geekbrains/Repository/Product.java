@@ -2,27 +2,25 @@ package ru.geekbrains.Repository;
 
 public class Product {
 
-    private Long id;
+    private int id;
     private String title;
-    private Long cost;
+    private double cost;
 
     public Product() {
 
     }
 
-    public Product(Long id, String title, Long cost) {
+    public Product(int id, String title, double cost) {
         this.id = id;
         this.title = title;
         this.cost = cost;
     }
 
-    public Long getId()
-    {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id)
-    {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -34,11 +32,12 @@ public class Product {
         this.title = title;
     }
 
-    public Long getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(Long cost) {
+    public void setCost(double cost) {
         this.cost = cost;
     }
+
 }

@@ -16,10 +16,9 @@ public class Repository {
     static List<Product> list = new ArrayList<>();
 
 
-    public static void insert(Product product)  {
-        list.add(new Product(-1L, "", -1L));
-
-    }
+//    public static void insert(Product product)  {
+//        list.add(new Product(-1L, "", -1L));
+//    }
 
     public static void update(Product product) {
 
@@ -29,13 +28,12 @@ public class Repository {
 
     }
 
-    public Product findById(long id) {
-        return new Product(-1L, "", -1L);
-    }
+//    public Product findById(long id) {
+//        return new Product(-1L, "", -1L);
+//    }
 
     public static List<Product> findAll()  {
             List<Product> res = new ArrayList<>();
-
             return res;
         }
 
