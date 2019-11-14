@@ -1,13 +1,12 @@
 package ru.geekbrains.persistence;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import org.springframework.lang.Nullable;
 import ru.geekbrains.controller.repr.ProductRepr;
 import ru.geekbrains.persistence.entity.Category;
 import ru.geekbrains.persistence.entity.Product;
@@ -16,9 +15,10 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
 
     List<Product> getAllByCategory_Id(Long categoryId);
+
     List<Product> getAllByCategory_Id(Long categoryId, Pageable pageable);
 
     @Query("select new ru.geekbrains.controller.repr.ProductRepr(p.id, p.name, p.description, p.price, p.category.id, p.category.name) " +
@@ -37,27 +37,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
                                  @Param("priceTo") BigDecimal priceTo,
                                  Pageable pageable);
 
-//    @Query("select new ru.geekbrains.controller.repr.ProductRepr(p.id, p.name, p.description, p.price, c.id, c.name) " +
-//            "from Product p " +
-//            "left join Category c on p.category.id = c.id " +
-//            "where (:categoryId = -1L or c.id = :categoryId) and " +
-//            "(:priceFrom is null or p.price >= :priceFrom) and " +
-//            "(:priceTo is null or p.price <= :priceTo)")
-//    List<ProductRepr> filterProducts(@Param("categoryId") Long categoryId,
-//                                     @Param("priceFrom") BigDecimal priceFrom,
-//                                     @Param("priceTo") BigDecimal priceTo,
-//                                     Pageable pageable);
-
-    @Query("select count(p)" +
-            "from Product p " +
-            "left join Category c on p.category.id = c.id " +
-            "where (:categoryId = -1L or c.id = :categoryId) and " +
-            "(:priceFrom is null or p.price >= :priceFrom) and " +
-            "(:priceTo is null or p.price <= :priceTo)")
-    Long countFilterProducts(@Param("categoryId") Long categoryId,
-                             @Param("priceFrom") BigDecimal priceFrom,
-                             @Param("priceTo") BigDecimal priceTo);
-
     static Specification<Product> category(Category category) {
         return (prod, cq, cb) -> cb.equal(prod.get("category"), category);
     }
@@ -69,23 +48,4 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     static Specification<Product> priceTo(BigDecimal priceTo) {
         return (prod, cq, cb) -> cb.le(prod.get("price"), priceTo);
     }
-
-    @Query("select p, c " +
-            "from Product p " +
-            "left join fetch Category c on p.category.id = c.id " +
-            "where (:categoryId = -1L or c.id = :categoryId) and " +
-            "(:priceFrom is null or p.price >= :priceFrom) and " +
-            "(:priceTo is null or p.price <= :priceTo)")
-    Page<Product> findAll(@Param("categoryId") Long categoryId,
-                          @Param("priceFrom") BigDecimal priceFrom,
-                          @Param("priceTo") BigDecimal priceTo,
-                          Pageable pageable);
-
-    @Query("select distinct p from Product p where p.id = :id" )
-    Optional<Product> findByIdProduct(@Param("id") Long id);
-
-    Page<Product> findAllByName(Specification<Product> spec, PageRequest of);
-
-    @Query("select new ru.geekbrains.controller.repr.ProductRepr(p.id, p.name, p.description, p.price, p.category.id, p.category.name) from Product p ")
-    List<ProductRepr> findAllByProduct();
 }

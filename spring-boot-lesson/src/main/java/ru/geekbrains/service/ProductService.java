@@ -22,6 +22,7 @@ import static ru.geekbrains.persistence.ProductRepository.*;
 public class ProductService {
 
     private ProductRepository productRepository;
+
     private CategoryRepository categoryRepository;
 
     @Autowired
@@ -30,7 +31,6 @@ public class ProductService {
         this.categoryRepository = categoryRepository;
     }
 
-    @Transactional
     public Long count() {
         return productRepository.count();
     }
@@ -58,17 +58,16 @@ public class ProductService {
     @Transactional(readOnly = true)
     public Page<Product> filterProducts(ProductFilter filter) {
         Specification<Product> spec = Specification.where(null);
+
         spec = spec
                 .and(filter.getCategoryId() != -1 ? category(new Category(1L)) : null)
                 .and(filter.getPriceFrom() != null ? priceFrom(filter.getPriceFrom()) : null)
                 .and(filter.getPriceTo() != null ? priceTo(filter.getPriceFrom()) : null);
-        return productRepository.findAllByName(spec, PageRequest.of(filter.getCurrentPage(), filter.getPageSize()));
-    }
 
-    @Transactional(readOnly = true)
-    public Long countFilterProducts(ProductFilter filter) {
-        return productRepository.countFilterProducts(filter.getCategoryId(),
-                filter.getPriceFrom(), filter.getPriceTo());
+        return productRepository.findAll(spec, PageRequest.of(filter.getCurrentPage(), filter.getPageSize()));
+
+//        return productRepository.filterProducts(filter.getCategoryId(),
+//                filter.getPriceFrom(), filter.getPriceTo(), PageRequest.of(filter.getCurrentPage(), filter.getPageSize()));
     }
 
     @Transactional
@@ -81,20 +80,5 @@ public class ProductService {
         product.setCategory(categoryRepository.findById(productRepr.getCategoryId())
                 .orElseThrow(() -> new IllegalStateException("Category not found")));
         productRepository.save(product);
-    }
-
-    @Transactional
-    public void delete(Long id) {
-        productRepository.deleteById(id);
-    }
-
-    @Transactional
-    public Optional<Product> findByIdProduct(Long id) {
-        return productRepository.findByIdProduct(id);
-    }
-
-    @Transactional
-    public List<ProductRepr> findAllByProduct() {
-        return  productRepository.findAllByProduct();
     }
 }

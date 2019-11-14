@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import ru.geekbrains.controller.error.ResourceNotFoundException;
 import ru.geekbrains.controller.repr.ProductFilter;
 import ru.geekbrains.controller.repr.ProductRepr;
 import ru.geekbrains.service.CategoryService;
@@ -20,6 +21,7 @@ import java.math.BigDecimal;
 public class ProductController {
 
     private final ProductService productService;
+
     private final CategoryService categoryService;
 
     @Autowired
@@ -38,9 +40,10 @@ public class ProductController {
         ProductFilter productFilter = new ProductFilter(categoryId, priceFrom, priceTo,
                 currentPage, pageSize);
 
-        model.addAttribute("products", productService.filterProducts(productFilter));
+        model.addAttribute("prodPage", productService.filterProducts(productFilter));
         model.addAttribute("filter", productFilter);
         model.addAttribute("categories", categoryService.findAllWithoutProducts());
+
         return "products";
     }
 
@@ -53,7 +56,7 @@ public class ProductController {
     @RequestMapping(value = "edit", method = RequestMethod.GET)
     public String editProduct(@RequestParam("id") Long id, Model model) {
         model.addAttribute("product", productService.getProductReprById(id)
-                .orElseThrow(() -> new IllegalStateException("Product not found")));
+                .orElseThrow(ResourceNotFoundException::new));
         return "product";
     }
 

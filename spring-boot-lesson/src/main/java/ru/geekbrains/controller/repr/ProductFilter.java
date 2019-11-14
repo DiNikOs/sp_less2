@@ -25,11 +25,6 @@ public class ProductFilter {
         this.pageSize = pageSize;
     }
 
-    //    public void applyItemCount(Integer itemCount) {
-//        this.pageCount = (itemCount + pageSize - 1) / pageSize;
-//        this.currentPage = currentPage >= pageCount ? pageCount - 1 : currentPage;
-//    }
-
     public Long getCategoryId() {
         return categoryId;
     }
